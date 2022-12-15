@@ -1,0 +1,56 @@
+<%- include('../partials/header') -%>
+
+<div class="col-9">
+    <div class="container p-3 w-100">
+        <h1 class="mt-5 mb-4">Add New Product</h1>
+    <%- include('../partials/messages') -%>
+        <form class="mt-2" id="newpostform" action="/product/new" method="GET">
+
+            <div class="row mt-5 justify-content-center d-flex">
+                <div class="col-12">
+                    <input type="text" class="form-control" name="search" placeholder="Enter Product URL" required>
+                </div>
+            </div>
+
+            <div class="justify-content-center d-flex mt-4">
+                <button id="fetchBtn" class="btn btn-danger w-25 py-2">Fetch Data</button>
+            </div>
+        </form>
+
+        <form class="mt-2" action="/product/new" method="POST">
+            <div class="row mt-5 justify-content-center d-flex">
+                <div class="col-9 mt-4">
+                    <input type="text" class="form-control" name="url" placeholder="Product URL" value="<%=productData.productUrl%>"
+                        readonly required>
+                </div>
+
+                <div class="col-9 mt-4">
+                    <input type="text" class="form-control" name="title" placeholder="Product Title" value="<%=productData.title%>"
+                        readonly required>
+                </div>
+
+                <div class="col-9 mt-4">
+                    <input type="text" class="form-control" name="price" placeholder="Product Price" value="<%=productData.price%>"
+                        readonly required>
+                </div>
+
+                <div class="col-9 mt-4">
+                    <input type="text" class="form-control" name="stock" placeholder="Product Stock" value="<%=productData.stock%>"
+                        readonly required>
+                </div>
+
+                <div class="col-9 mt-4">
+                    <input type="text" class="form-control" name="sku" placeholder="Enter Product SKU" required>
+                </div>
+            </div>
+
+            <div class="justify-content-center d-flex mt-4">
+                <button id="publishBtn" class="btn btn-danger w-25 py-2">Save Data</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</div>
+
+<%- include('../partials/footer') -%>

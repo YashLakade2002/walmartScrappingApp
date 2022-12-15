@@ -1,0 +1,45 @@
+<%- include('../partials/header') -%>
+
+<div class="col-9">
+    <div class="container p-3 w-100">
+        <h1 class="mt-5 mb-4">All Users</h1>
+        <%- include('../partials/messages') -%>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+            <tbody>
+
+                <% users.forEach((user)=> { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td>
+                            <a class="btn btn-primary" href="/edit/<%= user.id %>">Edit</a>
+                            <form style="display: inline;" action="/delete/user/<%= user.id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                <% }); %>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<%- include('../partials/footer') -%>

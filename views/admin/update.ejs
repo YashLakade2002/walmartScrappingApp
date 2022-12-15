@@ -1,0 +1,28 @@
+<%- include('../partials/header') -%>
+<div class="col-9">
+    <div class="container p-3 w-100">
+        <h1 class="mt-5 mb-4">Update Products</h1>
+        <%- include('../partials/messages') -%>
+
+        <% if(message != '' && message.includes("update started")) { %>
+        <div class="alert alert-success" role="alert">
+            <b>Updated Started Successfully. Please read the following instructions:</b>
+            <ul>
+                <li>Make sure that you have a fast and active internet connection.</li>
+                <li>To see update information go to Dashboard.</li>
+            </ul>
+        </div>
+        <%}%>
+
+    <div class="mt-3 justify-content-center d-flex">
+
+        <form class="mt-2" id="updateForm" action="/update" method="POST">
+            <input id="updatebtn" class="btn btn-danger px-5 py-2 mt-5" type="submit" value="Update">
+
+        </form>
+    </div>
+  </div>
+</div>
+
+
+<%- include('../partials/footer') -%>

@@ -1,0 +1,73 @@
+<%- include('../partials/header') -%>
+
+<div class="col-9">
+    <div class="container p-3 w-100">
+        <h1 class="mt-5 mb-4">Out of Stock Products</h1>
+        <%- include('../partials/messages') -%>
+        <div class="container">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    
+
+                    <% products.forEach((pro)=> { %>
+                        <% if(pro.oldstock.includes('In stock')) { %>
+                            <tr style="background-color: red; color: white;">
+                                <td><%= pro.sku %></td>
+                                <td><%= pro.title %></td>
+                                <td><%= pro.newprice %></td>
+                                <td><%= pro.newstock %></td>
+                                <td>
+                                    <a target="black" class="btn btn-primary p-2" href="<%= pro.url %>"><i class="fas fa-eye"></i></a>
+                                    <form style="display: inline;" action="/delete/product/<%= pro.id %>?_method=DELETE" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button style="cursor: pointer;" type="submit" class="btn btn-alert p-2"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }  else {%>
+                        <tr>
+
+                            <td><%= pro.sku %></td>
+                            <td><%= pro.title %></td>
+                            <td><%= pro.newprice %></td>
+                            <td><%= pro.newstock %></td>
+                            <td>
+                                <a target="black" class="btn btn-primary p-2" href="<%= pro.url %>"><i class="fas fa-eye"></i></a>
+                                <form style="display: inline;" action="/delete/product/<%= pro.id %>?_method=DELETE" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button style="cursor: pointer;" type="submit" class="btn btn-danger p-2"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    <% }); %>  
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+<%- include('../partials/footer') -%>
